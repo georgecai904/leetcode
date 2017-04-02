@@ -16,15 +16,15 @@ type ListNode struct {
 	next *ListNode
 }
 
-func (ln ListNode) insertNode(entries []int) ListNode{
+func (ln ListNode) insertNode(entries []int) ListNode {
 	var temp *ListNode
 
-	for i, val := range entries{
+	for i, val := range entries {
 		if i == 0 {
 			ln.val = val
 			temp = &ln
 			continue
-		}else{
+		} else {
 			var next ListNode
 			next.val = val
 			temp.next = &next
@@ -34,14 +34,14 @@ func (ln ListNode) insertNode(entries []int) ListNode{
 	return ln
 }
 
-func (ln ListNode) retrieveListNode() []int{
+func (ln ListNode) retrieveListNode() []int {
 	var head *ListNode = &ln
 	var result []int
-	for head != nil{
+	for head != nil {
 		result = append(result, head.val)
-		if head.next != nil{
+		if head.next != nil {
 			head = head.next
-		}else{
+		} else {
 			break
 		}
 	}
@@ -52,12 +52,12 @@ func addTwoNumbers(l1 *ListNode, l2 *ListNode) *ListNode {
 	var l3 ListNode
 	var entries []int
 	quotient := 0
-	for{
-		entries = append(entries, (l1.val + l2.val + quotient) % 10)
+	for {
+		entries = append(entries, (l1.val+l2.val+quotient)%10)
 		quotient = (l1.val + l2.val) / 10
-		if l1.next == nil{
+		if l1.next == nil {
 			break
-		}else{
+		} else {
 			l1 = l1.next
 			l2 = l2.next
 		}
@@ -68,10 +68,10 @@ func addTwoNumbers(l1 *ListNode, l2 *ListNode) *ListNode {
 
 func main() {
 	//addTwoNumbers()
-	var l1,l2 ListNode
+	var l1, l2 ListNode
 	//a.val = 10
-	l1 = l1.insertNode([]int{2,4,3})
-	l2 = l2.insertNode([]int{5,6,4})
+	l1 = l1.insertNode([]int{2, 4, 3})
+	l2 = l2.insertNode([]int{5, 6, 4})
 	//fmt.Println(l1.retrieveListNode())
 	//fmt.Println(l2.retrieveListNode())
 	fmt.Println(addTwoNumbers(&l1, &l2).retrieveListNode())
